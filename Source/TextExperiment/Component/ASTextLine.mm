@@ -84,7 +84,7 @@
     CFIndex glyphCount = CTRunGetGlyphCount(run);
     if (glyphCount == 0) continue;
     NSDictionary *attrs = (id)CTRunGetAttributes(run);
-    ASTextAttachment *attachment = attrs[ASTextAttachmentAttributeName];
+    id attachment = attrs[ASTextAttachmentAttributeName];
     if (attachment) {
       CGPoint runPosition = CGPointZero;
       CTRunGetPositions(run, CFRangeMake(0, 1), &runPosition);
@@ -92,7 +92,7 @@
       CGFloat ascent, descent, leading, runWidth;
       CGRect runTypoBounds;
       runWidth = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
-      
+
       if (_vertical) {
         ASTEXT_SWAP(runPosition.x, runPosition.y);
         runPosition.y = _position.y + runPosition.y;
@@ -109,9 +109,20 @@
         attachmentRanges = [[NSMutableArray alloc] init];
         attachmentRects = [[NSMutableArray alloc] init];
       }
-      [attachments addObject:attachment];
-      [attachmentRanges addObject:[NSValue valueWithRange:runRange]];
-      [attachmentRects addObject:[NSValue valueWithCGRect:runTypoBounds]];
+      ASTextAttachment *textAttachment = nil;
+      if ([attachment isKindOfClass:ASTextAttachment.class]) {
+        textAttachment = attachment;
+      }
+      else if ([attachment isKindOfClass:NSAttributedString.class]) {
+        NSDictionary<NSString *, id> *attributes = [(NSAttributedString *)attachment attributesAtIndex:0
+                                                                                        effectiveRange:NULL];
+        textAttachment = attributes[ASTextAttachmentAttributeName];
+      }
+      if (textAttachment) {
+        [attachments addObject:textAttachment];
+        [attachmentRanges addObject:[NSValue valueWithRange:runRange]];
+        [attachmentRects addObject:[NSValue valueWithCGRect:runTypoBounds]];
+      }
     }
   }
   _attachments = attachments;

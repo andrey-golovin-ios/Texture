@@ -551,12 +551,18 @@ static NSArray *DefaultLinkAttributeNames() {
       [mutableText addAttributes:@{ NSForegroundColorAttributeName : tintColor } range:limit];
     }
   }
-
-  return @{
+  NSDictionary *result = @{
     @"container": copiedContainer,
     @"text": mutableText,
     @"bgColor": bgColor
   };
+  if (self.nodeLoaded) {
+    NSMutableDictionary<NSString *, id> *mResult = [result mutableCopy];
+    mResult[@"layer"] = self.layer;
+    mResult[@"view"] = self.view;
+    result = [mResult copy];
+  }
+  return result;
 }
 
 + (void)drawRect:(CGRect)bounds withParameters:(NSDictionary *)layoutDict isCancelled:(NS_NOESCAPE asdisplaynode_iscancelled_block_t)isCancelledBlock isRasterizing:(BOOL)isRasterizing
@@ -585,7 +591,10 @@ static NSArray *DefaultLinkAttributeNames() {
   CGContextRef context = UIGraphicsGetCurrentContext();
   ASDisplayNodeAssert(context, @"This is no good without a context.");
   
-  [layout drawInContext:context size:bounds.size point:bounds.origin view:nil layer:nil debug:[ASTextDebugOption sharedDebugOption] cancel:isCancelledBlock];
+  [layout drawInContext:context size:bounds.size point:bounds.origin
+                   view:layoutDict[@"view"]
+                  layer:layoutDict[@"layer"]
+                  debug:[ASTextDebugOption sharedDebugOption] cancel:isCancelledBlock];
 }
 
 #pragma mark - Tint Color

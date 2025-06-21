@@ -3051,6 +3051,13 @@ static void ASTextDrawDecoration(ASTextLayout *layout, CGContextRef context, CGS
   CGContextRestoreGState(context);
 }
 
+static void ASTextDrawAttachmentPerform(bool inMain, void (^block)(void)) {
+  if (!inMain || NSThread.currentThread.isMainThread)
+    block();
+  else
+    dispatch_async(dispatch_get_main_queue(), block);
+}
+
 static void ASTextDrawAttachment(ASTextLayout *layout, CGContextRef context, CGSize size, CGPoint point, UIView *targetView, CALayer *targetLayer, BOOL (^cancel)(void)) {
   
   BOOL isVertical = layout.container.verticalForm;
@@ -3098,11 +3105,17 @@ static void ASTextDrawAttachment(ASTextLayout *layout, CGContextRef context, CGS
         CGContextRestoreGState(context);
       }
     } else if (view) {
-      view.frame = rect;
-      [targetView addSubview:view];
+      ASTextDrawAttachmentPerform(true, ^{
+        view.frame = rect;
+        [targetView addSubview:view];
+      });
     } else if (layer) {
-      layer.frame = rect;
-      [targetLayer addSublayer:layer];
+      bool requiresMain = [targetLayer.delegate isKindOfClass:UIView.class]
+                            || [layer.delegate isKindOfClass:UIView.class]; // UIView-related layer
+      ASTextDrawAttachmentPerform(requiresMain, ^{
+        layer.frame = rect;
+        [targetLayer addSublayer:layer];
+      });
     }
   }
 }

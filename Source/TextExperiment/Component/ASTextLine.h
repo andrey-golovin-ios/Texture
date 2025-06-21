@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) CGFloat lineWidth;  ///< line width
 @property (nonatomic, readonly) CGFloat trailingWhitespaceWidth;
 
-@property (nullable, nonatomic, readonly) NSArray<ASTextAttachment *> *attachments; ///< ASTextAttachment
+@property (nullable, nonatomic, readonly) NSArray *attachments;                     ///< NSMutableAttributeString / ASTextAttachment (possibly)
 @property (nullable, nonatomic, readonly) NSArray<NSValue *> *attachmentRanges;     ///< NSRange(NSValue)
 @property (nullable, nonatomic, readonly) NSArray<NSValue *> *attachmentRects;      ///< CGRect(NSValue)
 
