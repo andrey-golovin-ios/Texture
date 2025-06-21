@@ -32,6 +32,7 @@ Pod::Spec.new do |spec|
       'Source/TextKit/ASTextKitComponents.h',
       'Source/TextExperiment/Component/*.h',
       'Source/TextExperiment/String/ASTextAttribute.h',
+      'Source/TextExperiment/Utility/NSAttributedString+ASText.h',
     ]
 
     core.source_files = [

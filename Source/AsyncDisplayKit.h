@@ -116,6 +116,7 @@
 #import <AsyncDisplayKit/CoreGraphics+ASConvenience.h>
 #import <AsyncDisplayKit/IGListAdapter+AsyncDisplayKit.h>
 #import <AsyncDisplayKit/NSArray+Diffing.h>
+#import <AsyncDisplayKit/NSAttributedString+ASText.h>
 #import <AsyncDisplayKit/NSMutableAttributedString+TextKitAdditions.h>
 #import <AsyncDisplayKit/UICollectionViewLayout+ASConvenience.h>
 #import <AsyncDisplayKit/UIImage+ASConvenience.h>
