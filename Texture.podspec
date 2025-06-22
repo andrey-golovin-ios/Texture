@@ -27,7 +27,6 @@ Pod::Spec.new do |spec|
       'Source/Layout/**/*.h',
       'Source/Base/*.h',
       'Source/Debug/**/*.h',
-      'Source/Private/ASCollectionView+Undeprecated.h',
       'Source/TextKit/ASTextNodeTypes.h',
       'Source/TextKit/ASTextKitComponents.h',
       'Source/TextExperiment/Component/*.h',
