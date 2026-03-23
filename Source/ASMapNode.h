@@ -36,7 +36,7 @@ typedef NS_OPTIONS(NSUInteger, ASMapNodeShowAnnotationsOptions)
 /**
  The current options of ASMapNode. This can be set at any time and ASMapNode will animate the change.<br><br>This property may be set from a background thread before the node is loaded, and will automatically be applied to define the behavior of the static snapshot (if .liveMap = NO) or the internal MKMapView (otherwise).<br><br> Changes to the region and camera options will only be animated when when the liveMap mode is enabled, otherwise these options will be applied statically to the new snapshot. <br><br> The options object is used to specify properties even when the liveMap mode is enabled, allowing seamless transitions between the snapshot and liveMap (as well as back to the snapshot).
  */
-@property (nonatomic) MKMapSnapshotOptions *options;
+@property (nonatomic) MKMapSnapshotOptions *options AS_SWIFT_NONISOLATED;
 
 /** The region is simply the sub-field on the options object.  If the objects object is reset,
     this will in effect be overwritten and become the value of the .region property on that object.
@@ -52,7 +52,7 @@ typedef NS_OPTIONS(NSUInteger, ASMapNodeShowAnnotationsOptions)
 /**
  Set this to YES to turn the snapshot into an interactive MKMapView and vice versa. Defaults to NO. This property may be set on a background thread before the node is loaded, and will automatically be actioned, once the node is loaded. 
  */
-@property (getter=isLiveMap) BOOL liveMap;
+@property (getter=isLiveMap) BOOL liveMap AS_SWIFT_NONISOLATED;
 
 /**
  @abstract Whether ASMapNode should automatically request a new map snapshot to correspond to the new node size.

@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
  * exception. A future version of the framework may support using both, calling them serially, with the .layoutSpecBlock
  * superseding any values set by the method override.
  */
-- (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize;
+- (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize AS_SWIFT_NONISOLATED;
 
 @end
 

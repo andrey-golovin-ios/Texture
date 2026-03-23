@@ -113,7 +113,7 @@ AS_CATEGORY_IMPLEMENTABLE
  * calculated via use of -layoutSpecThatFits:), subclasses may inspect it here.
  */
 AS_CATEGORY_IMPLEMENTABLE
-- (void)calculatedLayoutDidChange ASDISPLAYNODE_REQUIRES_SUPER;
+- (void)calculatedLayoutDidChange ASDISPLAYNODE_REQUIRES_SUPER AS_SWIFT_NONISOLATED;
 
 
 #pragma mark - Layout calculation
@@ -132,7 +132,7 @@ AS_CATEGORY_IMPLEMENTABLE
  *
  * @note This method should not be called directly outside of ASDisplayNode; use -layoutThatFits: or -calculatedLayout instead.
  */
-- (ASLayout *)calculateLayoutThatFits:(ASSizeRange)constrainedSize;
+- (ASLayout *)calculateLayoutThatFits:(ASSizeRange)constrainedSize AS_SWIFT_NONISOLATED;
 
 /**
  * ASDisplayNode's implementation of -layoutThatFits:parentSize: calls this method to resolve the node's size
@@ -145,7 +145,7 @@ AS_CATEGORY_IMPLEMENTABLE
  */
 - (ASLayout *)calculateLayoutThatFits:(ASSizeRange)constrainedSize
                      restrictedToSize:(ASLayoutElementSize)size
-                 relativeToParentSize:(CGSize)parentSize;
+                 relativeToParentSize:(CGSize)parentSize AS_SWIFT_NONISOLATED;
 
 /**
  * @abstract Return the calculated size.
@@ -161,7 +161,7 @@ AS_CATEGORY_IMPLEMENTABLE
  *
  * @note This method should not be called directly outside of ASDisplayNode; use -layoutThatFits: or layoutThatFits:parentSize: instead.
  */
-- (CGSize)calculateSizeThatFits:(CGSize)constrainedSize;
+- (CGSize)calculateSizeThatFits:(CGSize)constrainedSize AS_SWIFT_NONISOLATED;
 
 /**
  * @abstract Invalidate previously measured and cached layout.
@@ -230,7 +230,7 @@ AS_CATEGORY_IMPLEMENTABLE
  */
 + (void)drawRect:(CGRect)bounds withParameters:(nullable id)parameters
                                    isCancelled:(AS_NOESCAPE asdisplaynode_iscancelled_block_t)isCancelledBlock
-                                 isRasterizing:(BOOL)isRasterizing;
+                                 isRasterizing:(BOOL)isRasterizing AS_SWIFT_NONISOLATED;
 
 /**
  * @summary Delegate override to provide new layer contents as a UIImage.
@@ -246,7 +246,7 @@ AS_CATEGORY_IMPLEMENTABLE
  * @note Called on the display queue and/or main queue (MUST BE THREAD SAFE)
  */
 + (nullable UIImage *)displayWithParameters:(nullable id)parameters
-                                isCancelled:(AS_NOESCAPE asdisplaynode_iscancelled_block_t)isCancelledBlock;
+                                isCancelled:(AS_NOESCAPE asdisplaynode_iscancelled_block_t)isCancelledBlock AS_SWIFT_NONISOLATED;
 
 /**
  * @abstract Delegate override for drawParameters
@@ -472,7 +472,7 @@ AS_CATEGORY_IMPLEMENTABLE
  *
  * @note Called on the display queue and/or main queue (MUST BE THREAD SAFE)
  */
-- (nullable UIImage *)placeholderImage;
+- (nullable UIImage *)placeholderImage AS_SWIFT_NONISOLATED;
 
 
 #pragma mark - Description

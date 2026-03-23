@@ -126,6 +126,16 @@
 #define AS_SUBCLASSING_RESTRICTED
 #endif
 
+#ifndef AS_SWIFT_NONISOLATED
+#if defined(NS_SWIFT_NONISOLATED)
+#define AS_SWIFT_NONISOLATED NS_SWIFT_NONISOLATED
+#elif __has_attribute(swift_attr)
+#define AS_SWIFT_NONISOLATED __attribute__((swift_attr("nonisolated")))
+#else
+#define AS_SWIFT_NONISOLATED
+#endif
+#endif
+
 #define AS_ARRAY_SIZE(x) (sizeof(x) / sizeof(x[0]))
 
 #define ASCreateOnce(expr) ({ \

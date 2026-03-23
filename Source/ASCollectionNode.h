@@ -598,7 +598,7 @@ NS_ASSUME_NONNULL_BEGIN
  *   Must be thread-safe (can be called on the main thread or a background
  *   queue) and should not implement reuse (it will be called once per row).
  */
-- (ASCellNodeBlock)collectionNode:(ASCollectionNode *)collectionNode nodeBlockForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (ASCellNodeBlock)collectionNode:(ASCollectionNode *)collectionNode nodeBlockForItemAtIndexPath:(NSIndexPath *)indexPath AS_SWIFT_NONISOLATED;
 
 /**
  * Similar to -collectionView:cellForItemAtIndexPath:.
@@ -619,7 +619,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param kind           The kind of supplementary element.
  * @param indexPath      The index path of the supplementary element.
  */
-- (ASCellNodeBlock)collectionNode:(ASCollectionNode *)collectionNode nodeBlockForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath;
+- (ASCellNodeBlock)collectionNode:(ASCollectionNode *)collectionNode nodeBlockForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath AS_SWIFT_NONISOLATED;
 
 /**
  * Asks the data source to provide a node to display for the given supplementary element in the collection view.
@@ -726,7 +726,7 @@ NS_ASSUME_NONNULL_BEGIN
  *   Must be thread-safe (can be called on the main thread or a background
  *   queue) and should not implement reuse (it will be called once per row).
  */
-- (ASCellNodeBlock)collectionView:(ASCollectionView *)collectionView nodeBlockForItemAtIndexPath:(NSIndexPath *)indexPath ASDISPLAYNODE_DEPRECATED_MSG("Use ASCollectionNode's method instead.");
+- (ASCellNodeBlock)collectionView:(ASCollectionView *)collectionView nodeBlockForItemAtIndexPath:(NSIndexPath *)indexPath AS_SWIFT_NONISOLATED ASDISPLAYNODE_DEPRECATED_MSG("Use ASCollectionNode's method instead.");
 
 /**
  * Asks the collection view to provide a supplementary node to display in the collection view.
@@ -809,7 +809,7 @@ NS_ASSUME_NONNULL_BEGIN
  * ASCollectionNode currently only supports batch events for tail loads. If you require a head load, consider
  * implementing a UIRefreshControl.
  */
-- (void)collectionNode:(ASCollectionNode *)collectionNode willBeginBatchFetchWithContext:(ASBatchContext *)context;
+- (void)collectionNode:(ASCollectionNode *)collectionNode willBeginBatchFetchWithContext:(ASBatchContext *)context AS_SWIFT_NONISOLATED;
 
 /**
  * Tell the collection node if batch fetching should begin.
@@ -864,7 +864,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)collectionView:(ASCollectionView *)collectionView didEndDisplayingNode:(ASCellNode *)node forItemAtIndexPath:(NSIndexPath *)indexPath ASDISPLAYNODE_DEPRECATED_MSG("Use ASCollectionNode's method instead.");
 
-- (void)collectionView:(ASCollectionView *)collectionView willBeginBatchFetchWithContext:(ASBatchContext *)context ASDISPLAYNODE_DEPRECATED_MSG("Use ASCollectionNode's method instead.");
+- (void)collectionView:(ASCollectionView *)collectionView willBeginBatchFetchWithContext:(ASBatchContext *)context AS_SWIFT_NONISOLATED ASDISPLAYNODE_DEPRECATED_MSG("Use ASCollectionNode's method instead.");
 
 /**
  * Tell the collectionView if batch fetching should begin.

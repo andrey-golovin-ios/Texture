@@ -56,7 +56,7 @@ typedef struct {
  * @abstract Recursively ensures node and all subnodes are displayed.
  * @see Full documentation in ASDisplayNode+FrameworkPrivate.h
  */
-- (void)recursivelyEnsureDisplaySynchronously:(BOOL)synchronously;
+- (void)recursivelyEnsureDisplaySynchronously:(BOOL)synchronously AS_SWIFT_NONISOLATED;
 
 /**
  * @abstract allow modification of a context before the node's content is drawn

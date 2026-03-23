@@ -259,7 +259,7 @@ didFinishDownloadingImageWithIdentifier:(ASImageIdentifier)imageIdentifier
  * @note This method may be called from any thread.
  * @return A PHAsset corresponding to `assetLocalIdentifier`, or nil if none is available.
  */
-- (nullable PHAsset *)multiplexImageNode:(ASMultiplexImageNode *)imageNode assetForLocalIdentifier:(NSString *)assetLocalIdentifier API_AVAILABLE(ios(8.0), tvos(10.0));
+- (nullable PHAsset *)multiplexImageNode:(ASMultiplexImageNode *)imageNode assetForLocalIdentifier:(NSString *)assetLocalIdentifier API_AVAILABLE(ios(8.0), tvos(10.0)) AS_SWIFT_NONISOLATED;
 @end
 
 #pragma mark -

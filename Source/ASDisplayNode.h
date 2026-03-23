@@ -614,7 +614,7 @@ ASDK_EXTERN NSInteger const ASDefaultDrawingPriority;
 /**
  * Marks the view as needing display. Convenience for use whether the view / layer is loaded or not. Safe to call from a background thread.
  */
-- (void)setNeedsDisplay;
+- (void)setNeedsDisplay AS_SWIFT_NONISOLATED;
 
 /**
  * Marks the node as needing layout. Convenience for use whether the view / layer is loaded or not. Safe to call from a background thread.
@@ -625,12 +625,12 @@ ASDK_EXTERN NSInteger const ASDefaultDrawingPriority;
  * Note: ASCellNode has special behavior in that calling this method will automatically notify
  * the containing ASTableView / ASCollectionView that the cell should be resized, if necessary.
  */
-- (void)setNeedsLayout;
+- (void)setNeedsLayout AS_SWIFT_NONISOLATED;
 
 /**
  * Performs a layout pass on the node. Convenience for use whether the view / layer is loaded or not. Safe to call from a background thread.
  */
-- (void)layoutIfNeeded;
+- (void)layoutIfNeeded AS_SWIFT_NONISOLATED;
 
 @property           CGRect frame;                             // default=CGRectZero
 @property           CGRect bounds;                            // default=CGRectZero
@@ -666,7 +666,7 @@ ASDK_EXTERN NSInteger const ASDefaultDrawingPriority;
  * @discussion This property is thread-safe and should always be preferred over CALayer's cornerRadius property,
  * even if corner rounding type is ASCornerRoundingTypeDefaultSlowCALayer.
  */
-@property           CGFloat cornerRadius;                     // default=0.0
+@property           CGFloat cornerRadius AS_SWIFT_NONISOLATED;                     // default=0.0
 
 /** @abstract Which corners to mask when rounding corners.
  *
@@ -944,7 +944,7 @@ typedef NS_ENUM(NSInteger, ASLayoutEngineType) {
 /**
  * @abstract Cancels all performing layout transitions. Can be called on any thread.
  */
-- (void)cancelLayoutTransition;
+- (void)cancelLayoutTransition AS_SWIFT_NONISOLATED;
 
 @end
 

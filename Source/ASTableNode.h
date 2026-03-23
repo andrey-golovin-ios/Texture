@@ -517,7 +517,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @note This method takes precedence over tableNode:nodeForRowAtIndexPath: if implemented.
  */
-- (ASCellNodeBlock)tableNode:(ASTableNode *)tableNode nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (ASCellNodeBlock)tableNode:(ASTableNode *)tableNode nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath AS_SWIFT_NONISOLATED;
 
 /**
  * Asks the data source for a node to represent the row at the given index path.
@@ -553,7 +553,7 @@ NS_ASSUME_NONNULL_BEGIN
  *   Must be thread-safe (can be called on the main thread or a background
  *   queue) and should not implement reuse (it will be called once per row).
  */
-- (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath AS_WARN_UNUSED_RESULT ASDISPLAYNODE_DEPRECATED_MSG("Use ASTableNode's method instead.");
+- (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath AS_SWIFT_NONISOLATED AS_WARN_UNUSED_RESULT ASDISPLAYNODE_DEPRECATED_MSG("Use ASTableNode's method instead.");
 
 /**
  * Indicator to lock the data source for data fetching in async mode.
@@ -654,7 +654,7 @@ NS_ASSUME_NONNULL_BEGIN
  * ASTableView currently only supports batch events for tail loads. If you require a head load, consider implementing a
  * UIRefreshControl.
  */
-- (void)tableNode:(ASTableNode *)tableNode willBeginBatchFetchWithContext:(ASBatchContext *)context;
+- (void)tableNode:(ASTableNode *)tableNode willBeginBatchFetchWithContext:(ASBatchContext *)context AS_SWIFT_NONISOLATED;
 
 /**
  * Tell the tableView if batch fetching should begin.
@@ -710,7 +710,7 @@ NS_ASSUME_NONNULL_BEGIN
  * ASTableView currently only supports batch events for tail loads. If you require a head load, consider implementing a
  * UIRefreshControl.
  */
-- (void)tableView:(ASTableView *)tableView willBeginBatchFetchWithContext:(ASBatchContext *)context ASDISPLAYNODE_DEPRECATED_MSG("Use ASTableNode's method instead.");
+- (void)tableView:(ASTableView *)tableView willBeginBatchFetchWithContext:(ASBatchContext *)context AS_SWIFT_NONISOLATED ASDISPLAYNODE_DEPRECATED_MSG("Use ASTableNode's method instead.");
 
 /**
  * Tell the tableView if batch fetching should begin.

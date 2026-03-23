@@ -123,20 +123,20 @@ __unused static NSString * _Nonnull NSStringFromASHierarchyStateChange(ASHierarc
 @property (nonatomic) CGRect threadSafeBounds;
 
 // Returns the bounds of the node without reaching the view or layer
-- (CGRect)_locked_threadSafeBounds;
+- (CGRect)_locked_threadSafeBounds AS_SWIFT_NONISOLATED;
 
 // The -pendingInterfaceState holds the value that will be applied to -interfaceState by the
 // ASCATransactionQueue. If already applied, it matches -interfaceState. Thread-safe access.
 @property (nonatomic, readonly) ASInterfaceState pendingInterfaceState;
 
 // These methods are recursive, and either union or remove the provided interfaceState to all sub-elements.
-- (void)enterInterfaceState:(ASInterfaceState)interfaceState;
-- (void)exitInterfaceState:(ASInterfaceState)interfaceState;
-- (void)recursivelySetInterfaceState:(ASInterfaceState)interfaceState;
+- (void)enterInterfaceState:(ASInterfaceState)interfaceState AS_SWIFT_NONISOLATED;
+- (void)exitInterfaceState:(ASInterfaceState)interfaceState AS_SWIFT_NONISOLATED;
+- (void)recursivelySetInterfaceState:(ASInterfaceState)interfaceState AS_SWIFT_NONISOLATED;
 
 // These methods are recursive, and either union or remove the provided hierarchyState to all sub-elements.
-- (void)enterHierarchyState:(ASHierarchyState)hierarchyState;
-- (void)exitHierarchyState:(ASHierarchyState)hierarchyState;
+- (void)enterHierarchyState:(ASHierarchyState)hierarchyState AS_SWIFT_NONISOLATED;
+- (void)exitHierarchyState:(ASHierarchyState)hierarchyState AS_SWIFT_NONISOLATED;
 
 // Changed before calling willEnterHierarchy / didExitHierarchy.
 @property (readonly, getter = isInHierarchy) BOOL inHierarchy;
@@ -152,7 +152,7 @@ __unused static NSString * _Nonnull NSStringFromASHierarchyStateChange(ASHierarc
  *
  * @see ASInterfaceState
  */
-@property (nonatomic) ASHierarchyState hierarchyState;
+@property (nonatomic) ASHierarchyState hierarchyState AS_SWIFT_NONISOLATED;
 
 /**
  * Represent the current custom action in representation for the node
@@ -185,7 +185,7 @@ __unused static NSString * _Nonnull NSStringFromASHierarchyStateChange(ASHierarc
  * In order to guarantee against deadlocks, this method should only be called on the main thread.
  * It may block on the private queue, [_ASDisplayLayer displayQueue]
  */
-- (void)recursivelyEnsureDisplaySynchronously:(BOOL)synchronously;
+- (void)recursivelyEnsureDisplaySynchronously:(BOOL)synchronously AS_SWIFT_NONISOLATED;
 
 /**
  * @abstract Calls -didExitPreloadState on the receiver and its subnode hierarchy.
@@ -196,7 +196,7 @@ __unused static NSString * _Nonnull NSStringFromASHierarchyStateChange(ASHierarc
  *
  * @see [ASDisplayNode(Subclassing) didExitPreloadState] and [ASDisplayNode(Subclassing) didEnterPreloadState]
  */
-- (void)recursivelyClearPreloadedData;
+- (void)recursivelyClearPreloadedData AS_SWIFT_NONISOLATED;
 
 /**
  * @abstract Calls -didEnterPreloadState on the receiver and its subnode hierarchy.
@@ -205,7 +205,7 @@ __unused static NSString * _Nonnull NSStringFromASHierarchyStateChange(ASHierarc
  *
  * @see [ASDisplayNode(Subclassing) didEnterPreloadState] and [ASDisplayNode(Subclassing) didExitPreloadState]
  */
-- (void)recursivelyPreload;
+- (void)recursivelyPreload AS_SWIFT_NONISOLATED;
 
 /**
  * @abstract Triggers a recursive call to -didEnterPreloadState when the node has an interfaceState of ASInterfaceStatePreload
