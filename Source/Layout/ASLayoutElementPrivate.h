@@ -62,11 +62,9 @@ NS_ASSUME_NONNULL_END
 // Provides extension points for elments that comply to ASLayoutElement like ASLayoutSpec to add additional
 // properties besides the default one provided in ASLayoutElementStyle
 
-enum {
-  kMaxLayoutElementBoolExtensions = 1,
-  kMaxLayoutElementStateIntegerExtensions = 4,
-  kMaxLayoutElementStateEdgeInsetExtensions = 1
-};
+enum { kMaxLayoutElementBoolExtensions = 1 };
+enum { kMaxLayoutElementStateIntegerExtensions = 4 };
+enum { kMaxLayoutElementStateEdgeInsetExtensions = 1 };
 
 typedef struct ASLayoutElementStyleExtensions {
   // Values to store extensions
